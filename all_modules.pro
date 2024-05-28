@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    text_write_seeker
+    test_app \
+    text_write_seeker \
