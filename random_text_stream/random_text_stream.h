@@ -10,7 +10,9 @@ class RANDOM_TEXT_STREAM_EXPORT RandomTextStream
 {
 public:
     RandomTextStream(QFile* f);
+    RandomTextStream();
 
+    void setFile(QFile* f);
     void write();
     int lines() const;
     void addLine(const QString& content = "");

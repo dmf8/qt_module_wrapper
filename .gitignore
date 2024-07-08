@@ -1,3 +1,5 @@
 *.user
 test_app/*
 bin/*
+opencv_build_4.4.0/*
+

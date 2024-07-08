@@ -1,3 +1,6 @@
+# third part
+PRI_OPENCV_440 = $${PROJECT_ROOT_PATH}/opencv_build_4.4.0/ref_opencv_440.pri
+
 # tools
 PRI_META_ENUM = $${PROJECT_ROOT_PATH}/meta_enum/ref_meta_enum.pri
 PRI_WAIT_FOR_RESULT = $${PROJECT_ROOT_PATH}/wait_for_result/ref_wait_for_result.pri
@@ -15,6 +18,7 @@ PRI_INI_CONFIG = $${PROJECT_ROOT_PATH}/ini_config/ref_ini_config.pri
 PRI_XML_HANDLER = $${PROJECT_ROOT_PATH}/xml_handler/ref_xml_handler.pri
 PRI_JSON_HANDLER = $${PROJECT_ROOT_PATH}/json_handler/ref_json_handler.pri
 PRI_RANDOM_TEXT_STREAM = $${PROJECT_ROOT_PATH}/random_text_stream/ref_random_text_stream.pri
+PRI_OPENCV_FORMAT_CONVERT = $${PROJECT_ROOT_PATH}/opencv_format_convert/ref_opencv_format_convert.pri
 
 
 # camera

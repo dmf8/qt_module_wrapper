@@ -9,6 +9,16 @@ RandomTextStream::RandomTextStream(QFile *f)
 {
 }
 
+RandomTextStream::RandomTextStream()
+    : buffer({})
+{
+}
+
+void RandomTextStream::setFile(QFile *f)
+{
+    this->f = f;
+}
+
 void RandomTextStream::write()
 {
     QTextStream s(f);
