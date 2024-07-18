@@ -118,14 +118,13 @@ void Work::ModifyPro(const QString &pro_file)
 
 void Work::AppendList(const QString &pro_file, const QString &root_pro)
 {
-    QFileInfo info, info2;
-    info.setFile(root_pro);
-    info2.setFile(pro_file);
+    QFileInfo info_root, info_sub;
+    info_sub.setFile(pro_file);
 
-    QString module_name = info2.baseName().toLower();
+    QString module_name = info_sub.baseName().toLower();
     QString pri_ref_name = module_name.toUpper();
 
-    QString list_file = QString("%1/module_list.pri").arg(info.absolutePath());
+    QString list_file = QString("%1/module_list.pri").arg(root_pro);
 
     QFile f(list_file);
     f.open(QIODevice::ReadWrite | QIODevice::Append);

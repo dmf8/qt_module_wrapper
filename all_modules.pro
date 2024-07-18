@@ -7,4 +7,3 @@ SUBDIRS += \
     pro_module_generate_tool \
     random_text_stream \
     test_app \
-    test_lib
