@@ -19,10 +19,11 @@ QML_IMPORT_PATH =
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
 HEADERS += \
     work.h
+
+APP_NAME = random_text_stream
+PROJECT_ROOT_PATH = $$absolute_path($${_PRO_FILE_PWD_}/../)
+include($$absolute_path($${PROJECT_ROOT_PATH}/common_dest.pri))
+include($$absolute_path($${PROJECT_ROOT_PATH}/module_list.pri))
+
