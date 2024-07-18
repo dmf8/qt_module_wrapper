@@ -10,17 +10,18 @@ Work::Work(QObject *parent)
 {
 }
 
-void Work::OnStartGen(const QString &root_url, const QString &module_url)
+void Work::OnStartGen(const QString &root_path_url,
+                      const QString &module_file_url)
 {
     QUrl url;
-    url.setUrl(root_url);
-    QString root_pro = url.toLocalFile();
-    url.setUrl(module_url);
+    url.setUrl(root_path_url);
+    QString root_path = url.toLocalFile();
+    url.setUrl(module_file_url);
     QString module_pro = url.toLocalFile();
 
     CreatePri(module_pro);
     ModifyPro(module_pro);
-    AppendList(module_pro, root_pro);
+    AppendList(module_pro, root_path);
 }
 
 void Work::Test()

@@ -10,7 +10,7 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
-    signal startGen(string root_path_url, string module_path_url)
+    signal startGen(string root_path_url, string module_file_url)
 
     ColumnLayout {
         spacing: 0
