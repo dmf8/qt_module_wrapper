@@ -1,12 +1,22 @@
 #ifndef OPENCV_FORMAT_CONVERT_H
 #define OPENCV_FORMAT_CONVERT_H
 
+#include <QImage>
+
 #include "opencv_format_convert_global.h"
 
-class OPENCV_FORMAT_CONVERT_EXPORT Opencv_format_convert
+namespace cv
+{
+class Mat;
+}
+
+class OPENCV_FORMAT_CONVERT_EXPORT OpencvFormatConvert
 {
 public:
-    Opencv_format_convert();
+    OpencvFormatConvert();
+
+    static void MatInfoOutput(cv::Mat img);
+    static QImage Mat2QImage(cv::Mat img) noexcept(false);
 };
 
-#endif // OPENCV_FORMAT_CONVERT_H
+#endif  // OPENCV_FORMAT_CONVERT_H

@@ -1,4 +1,4 @@
-QT -= gui
+QT += gui
 
 TEMPLATE = lib
 DEFINES += OPENCV_FORMAT_CONVERT_LIBRARY
@@ -21,4 +21,4 @@ PROJECT_ROOT_PATH = $$absolute_path($${_PRO_FILE_PWD_}/../)
 include($$absolute_path($${PROJECT_ROOT_PATH}/common_dest.pri))
 include($$absolute_path($${PROJECT_ROOT_PATH}/module_list.pri))
 include($${PRI_OPENCV_FORMAT_CONVERT})
-include($${PRI_OPENCV_440})
+
