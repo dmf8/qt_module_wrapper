@@ -1,0 +1,12 @@
+#ifndef WAIT_FOR_RESULT_GLOBAL_H
+#define WAIT_FOR_RESULT_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(WAIT_FOR_RESULT_LIBRARY)
+#  define WAIT_FOR_RESULT_EXPORT Q_DECL_EXPORT
+#else
+#  define WAIT_FOR_RESULT_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // WAIT_FOR_RESULT_GLOBAL_H

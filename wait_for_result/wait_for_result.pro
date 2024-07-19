@@ -1,5 +1,7 @@
-QT += quick
-QT += widgets
+QT -= gui
+
+TEMPLATE = lib
+DEFINES += WAIT_FOR_RESULT_LIBRARY
 
 CONFIG += c++11
 
@@ -8,22 +10,19 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp \
-        work.cpp
-
-RESOURCES += qml.qrc
-
-# Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
-
-# Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH =
+    wait_direct_call.cpp \
+    wait_for_result.cpp \
+    wait_for_result2.cpp
 
 HEADERS += \
-    work.h
+    wait_direct_call.h \
+    wait_for_result2.h \
+    wait_for_result_global.h \
+    wait_for_result.h
 
-APP_NAME = pro_module_generate_tool
+
+LIB_NAME = wait_for_result
 PROJECT_ROOT_PATH = $$absolute_path($${_PRO_FILE_PWD_}/../)
 include($$absolute_path($${PROJECT_ROOT_PATH}/common_dest.pri))
 include($$absolute_path($${PROJECT_ROOT_PATH}/module_list.pri))
-
+include($${PRI_WAIT_FOR_RESULT})

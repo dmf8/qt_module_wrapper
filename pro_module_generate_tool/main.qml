@@ -8,7 +8,7 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Qt pro module generate tool")
 
     signal startGen(string root_path_url, string module_file_url)
 
