@@ -5,7 +5,9 @@
 #include <QObject>
 #include <atomic>
 
-class WaitForResult2 : public QObject
+#include "wait_for_result_global.h"
+
+class WAIT_FOR_RESULT_EXPORT WaitForResult2 : public QObject
 {
     Q_OBJECT
 public:

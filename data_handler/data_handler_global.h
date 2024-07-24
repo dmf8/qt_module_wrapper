@@ -1,0 +1,12 @@
+#ifndef DATA_HANDLER_GLOBAL_H
+#define DATA_HANDLER_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(DATA_HANDLER_LIBRARY)
+#  define DATA_HANDLER_EXPORT Q_DECL_EXPORT
+#else
+#  define DATA_HANDLER_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // DATA_HANDLER_GLOBAL_H

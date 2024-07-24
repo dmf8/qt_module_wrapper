@@ -5,6 +5,7 @@
 
 SerialWrapper::SerialWrapper(QObject *parent)
     : QObject(parent)
+    , port(new QSerialPort(this))
 {
     connect(port, &QSerialPort::readyRead, this, &SerialWrapper::ReadyRead);
 }
