@@ -3,6 +3,7 @@ PRI_OPENCV_440 = $${PROJECT_ROOT_PATH}/opencv_build_4.4.0/ref_opencv_440.pri
 
 # tools
 PRI_WAIT_FOR_RESULT = $${PROJECT_ROOT_PATH}/wait_for_result/ref_wait_for_result.pri
+PRI_PRE_DEFINES = $${PROJECT_ROOT_PATH}/pre-defines/ref_pre-defines.pri
 
 # math
 PRI_DATA_HANDLER = $${PROJECT_ROOT_PATH}/data_handler/ref_data_handler.pri
