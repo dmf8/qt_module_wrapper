@@ -10,15 +10,11 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    wait_direct_call.cpp \
-    wait_for_result.cpp \
     wait_for_result2.cpp
 
 HEADERS += \
-    wait_direct_call.h \
     wait_for_result2.h \
     wait_for_result_global.h \
-    wait_for_result.h
 
 
 LIB_NAME = wait_for_result

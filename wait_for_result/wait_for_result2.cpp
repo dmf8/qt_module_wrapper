@@ -6,8 +6,6 @@
 #include <QTimer>
 #include <thread>
 
-#include "wait_for_result.h"
-
 WaitForResult2::WaitForResult2(QObject *parent)
     : QObject(parent)
     , atomic(-1)
@@ -46,7 +44,6 @@ void WaitForResult2::TrySet(int ret)
 void WaitForResult2::SendResult()
 {
     if (!loop.isRunning()) {
-        qDebug() << __FUNCTION__ << "not running, retry";
         QTimer::singleShot(10, [&] { SendResult(); });
     } else
         emit Result(atomic.load());
