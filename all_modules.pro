@@ -5,7 +5,7 @@ CONFIG += ordered
 SUBDIRS += \
     data_handler \
 #    wait_for_result \
-#    json_handler \
+    json_handler \
     file_operation \
     opencv_format_convert \
 #    pro_module_generate_tool \

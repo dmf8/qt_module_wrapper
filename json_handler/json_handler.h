@@ -13,6 +13,7 @@ class JSON_HANDLER_EXPORT JsonHandler
 public:
     JsonHandler();
 
+    // read
     bool GetDocument(const QString &file_name, QJsonDocument &doc);
     bool GetRootObj(const QJsonDocument &doc, QJsonObject &obj);
     bool GetRootArray(const QJsonDocument &doc, QJsonArray &arr);
@@ -24,6 +25,11 @@ public:
     bool GetObjString(const QJsonObject &obj, const QString &key, QString &val);
     bool GetObjObj(const QJsonObject &obj, const QString &key, QJsonObject &val);
     bool GetObjArray(const QJsonObject &obj, const QString &key, QJsonArray &val);
+
+    // write
+    bool SaveDocument(const QString &file, const QJsonDocument &doc);
+    bool SaveObject(const QString &file, const QJsonObject &obj);
+    bool SaveArray(const QString &file, const QJsonArray &arr);
 };
 
 #endif  // JSON_HANDLER_H

@@ -16,8 +16,7 @@ bool JsonHandler::GetDocument(const QString &file_name, QJsonDocument &doc)
     QFile f(file_name);
     bool ret = f.open(QIODevice::ReadOnly);
     QByteArray data;
-    if (ret)
-        data = f.readAll();
+    if (ret) data = f.readAll();
     f.close();
 
     doc = QJsonDocument::fromJson(data);
@@ -107,4 +106,27 @@ bool JsonHandler::GetObjArray(const QJsonObject &obj, const QString &key, QJsonA
 
     val = temp.toArray();
     return true;
+}
+
+bool JsonHandler::SaveDocument(const QString &file, const QJsonDocument &doc)
+{
+    QFile f(file);
+    if (!f.open(QFile::WriteOnly)) return false;
+
+    QByteArray raw = doc.toJson();
+    f.write(raw);
+    f.close();
+    return true;
+}
+
+bool JsonHandler::SaveObject(const QString &file, const QJsonObject &obj)
+{
+    QJsonDocument doc(obj);
+    return SaveDocument(file, doc);
+}
+
+bool JsonHandler::SaveArray(const QString &file, const QJsonArray &arr)
+{
+    QJsonDocument doc(arr);
+    return SaveDocument(file, doc);
 }
