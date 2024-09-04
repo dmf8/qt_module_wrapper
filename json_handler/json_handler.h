@@ -1,12 +1,12 @@
 #ifndef JSON_HANDLER_H
 #define JSON_HANDLER_H
 
-#include "json_handler_global.h"
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
 
-class QJsonObject;
-class QJsonValue;
-class QJsonArray;
-class QJsonDocument;
+#include "json_handler_global.h"
 
 class JSON_HANDLER_EXPORT JsonHandler
 {
@@ -26,4 +26,4 @@ public:
     bool GetObjArray(const QJsonObject &obj, const QString &key, QJsonArray &val);
 };
 
-#endif // JSON_HANDLER_H
+#endif  // JSON_HANDLER_H
