@@ -19,17 +19,17 @@ public:
     bool GetRootArray(const QJsonDocument &doc, QJsonArray &arr);
 
     bool GetObject(const QJsonObject &obj, const QString &key, QJsonValue &val);
-    bool GetObjInt(const QJsonObject &obj, const QString &key, int &val);
-    bool GetObjDouble(const QJsonObject &obj, const QString &key, double &val);
-    bool GetObjBool(const QJsonObject &obj, const QString &key, bool &val);
-    bool GetObjString(const QJsonObject &obj, const QString &key, QString &val);
-    bool GetObjObj(const QJsonObject &obj, const QString &key, QJsonObject &val);
-    bool GetObjArray(const QJsonObject &obj, const QString &key, QJsonArray &val);
+    bool GetInt(const QJsonObject &obj, const QString &key, int &val);
+    bool GetDouble(const QJsonObject &obj, const QString &key, double &val);
+    bool GetBool(const QJsonObject &obj, const QString &key, bool &val);
+    bool GetString(const QJsonObject &obj, const QString &key, QString &val);
+    bool GetObj(const QJsonObject &obj, const QString &key, QJsonObject &val);
+    bool GetArr(const QJsonObject &obj, const QString &key, QJsonArray &val);
 
     // write
-    bool SaveDocument(const QString &file, const QJsonDocument &doc);
-    bool SaveObject(const QString &file, const QJsonObject &obj);
-    bool SaveArray(const QString &file, const QJsonArray &arr);
+    bool Save(const QString &file, const QJsonDocument &doc);
+    bool Save(const QString &file, const QJsonObject &obj);
+    bool Save(const QString &file, const QJsonArray &arr);
 };
 
 #endif  // JSON_HANDLER_H

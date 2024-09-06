@@ -108,7 +108,7 @@ bool JsonHandler::GetObjArray(const QJsonObject &obj, const QString &key, QJsonA
     return true;
 }
 
-bool JsonHandler::SaveDocument(const QString &file, const QJsonDocument &doc)
+bool JsonHandler::Save(const QString &file, const QJsonDocument &doc)
 {
     QFile f(file);
     if (!f.open(QFile::WriteOnly)) return false;
@@ -119,14 +119,14 @@ bool JsonHandler::SaveDocument(const QString &file, const QJsonDocument &doc)
     return true;
 }
 
-bool JsonHandler::SaveObject(const QString &file, const QJsonObject &obj)
+bool JsonHandler::Save(const QString &file, const QJsonObject &obj)
 {
     QJsonDocument doc(obj);
-    return SaveDocument(file, doc);
+    return Save(file, doc);
 }
 
-bool JsonHandler::SaveArray(const QString &file, const QJsonArray &arr)
+bool JsonHandler::Save(const QString &file, const QJsonArray &arr)
 {
     QJsonDocument doc(arr);
-    return SaveDocument(file, doc);
+    return Save(file, doc);
 }
