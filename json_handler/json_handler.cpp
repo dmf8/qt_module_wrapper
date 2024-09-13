@@ -46,7 +46,7 @@ bool JsonHandler::GetObject(const QJsonObject &obj, const QString &key, QJsonVal
     return !val.isUndefined();
 }
 
-bool JsonHandler::GetObjInt(const QJsonObject &obj, const QString &key, int &val)
+bool JsonHandler::GetInt(const QJsonObject &obj, const QString &key, int &val)
 {
     QJsonValue temp;
     if (!GetObject(obj, key, temp)) return false;
@@ -58,7 +58,7 @@ bool JsonHandler::GetObjInt(const QJsonObject &obj, const QString &key, int &val
     return true;
 }
 
-bool JsonHandler::GetObjDouble(const QJsonObject &obj, const QString &key, double &val)
+bool JsonHandler::GetDouble(const QJsonObject &obj, const QString &key, double &val)
 {
     QJsonValue temp;
     if (!GetObject(obj, key, temp)) return false;
@@ -68,7 +68,7 @@ bool JsonHandler::GetObjDouble(const QJsonObject &obj, const QString &key, doubl
     return true;
 }
 
-bool JsonHandler::GetObjBool(const QJsonObject &obj, const QString &key, bool &val)
+bool JsonHandler::GetBool(const QJsonObject &obj, const QString &key, bool &val)
 {
     QJsonValue temp;
     if (!GetObject(obj, key, temp)) return false;
@@ -78,7 +78,7 @@ bool JsonHandler::GetObjBool(const QJsonObject &obj, const QString &key, bool &v
     return true;
 }
 
-bool JsonHandler::GetObjString(const QJsonObject &obj, const QString &key, QString &val)
+bool JsonHandler::GetString(const QJsonObject &obj, const QString &key, QString &val)
 {
     QJsonValue temp;
     if (!GetObject(obj, key, temp)) return false;
@@ -88,7 +88,7 @@ bool JsonHandler::GetObjString(const QJsonObject &obj, const QString &key, QStri
     return true;
 }
 
-bool JsonHandler::GetObjObj(const QJsonObject &obj, const QString &key, QJsonObject &val)
+bool JsonHandler::GetObj(const QJsonObject &obj, const QString &key, QJsonObject &val)
 {
     QJsonValue temp;
     if (!GetObject(obj, key, temp)) return false;
@@ -98,7 +98,7 @@ bool JsonHandler::GetObjObj(const QJsonObject &obj, const QString &key, QJsonObj
     return true;
 }
 
-bool JsonHandler::GetObjArray(const QJsonObject &obj, const QString &key, QJsonArray &val)
+bool JsonHandler::GetArr(const QJsonObject &obj, const QString &key, QJsonArray &val)
 {
     QJsonValue temp;
     if (!GetObject(obj, key, temp)) return false;
