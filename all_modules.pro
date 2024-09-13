@@ -12,4 +12,5 @@ SUBDIRS += \
 #    random_text_stream \
     qml_module \
 #    serial_wrapper \
+    v4l2_usb_camera \
     test_app \

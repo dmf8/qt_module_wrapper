@@ -16,3 +16,4 @@ PRI_JSON_HANDLER = $${PROJECT_ROOT_PATH}/json_handler/ref_json_handler.pri
 # io
 PRI_SERIAL_WRAPPER = $${PROJECT_ROOT_PATH}/serial_wrapper/ref_serial_wrapper.pri
 PRI_FILE_OPERATION = $${PROJECT_ROOT_PATH}/file_operation/ref_file_operation.pri
+PRI_V4L2_USB_CAMERA = $${PROJECT_ROOT_PATH}/v4l2_usb_camera/ref_v4l2_usb_camera.pri

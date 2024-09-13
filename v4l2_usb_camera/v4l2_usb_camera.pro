@@ -1,7 +1,7 @@
-QT -= gui
+QT += gui
 
 TEMPLATE = lib
-DEFINES += FILE_OPERATION_LIBRARY
+DEFINES += V4L2_USB_CAMERA_LIBRARY
 
 CONFIG += c++11
 
@@ -10,14 +10,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    file_operation.cpp
+    camera.cpp \
+    camera_process.cpp \
+    camera_step.cpp
 
 HEADERS += \
-    file_operation_global.h \
-    file_operation.h
+    camera_global.h \
+    camera.h \
+    camera_process.h \
+    camera_step.h
 
-LIB_NAME = file_operation
+LIB_NAME = v4l2_usb_camera
 PROJECT_ROOT_PATH = $$absolute_path($${_PRO_FILE_PWD_}/../)
 include($$absolute_path($${PROJECT_ROOT_PATH}/common_dest.pri))
 include($$absolute_path($${PROJECT_ROOT_PATH}/module_list.pri))
-include($${PRI_FILE_OPERATION})
+include($${PRI_V4L2_USB_CAMERA})
