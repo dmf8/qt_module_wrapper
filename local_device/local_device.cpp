@@ -1,5 +1,9 @@
 #include "local_device.h"
 
-Local_device::Local_device()
+#include <QDebug>
+#include <QNetworkInterface>
+#include <QString>
+
+LocalDevice::LocalDevice()
 {
 }

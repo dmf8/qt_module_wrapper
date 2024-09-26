@@ -1,4 +1,5 @@
 QT -= gui
+QT += network
 
 TEMPLATE = lib
 DEFINES += LOCAL_DEVICE_LIBRARY
@@ -10,11 +11,13 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    local_device.cpp
+    local_device.cpp \
+    network_interface.cpp
 
 HEADERS += \
     local_device_global.h \
-    local_device.h
+    local_device.h \
+    network_interface.h
 
 # Default rules for deployment.
 unix {
