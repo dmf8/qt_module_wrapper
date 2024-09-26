@@ -1,0 +1,12 @@
+#ifndef LOCAL_DEVICE_GLOBAL_H
+#define LOCAL_DEVICE_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(LOCAL_DEVICE_LIBRARY)
+#  define LOCAL_DEVICE_EXPORT Q_DECL_EXPORT
+#else
+#  define LOCAL_DEVICE_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // LOCAL_DEVICE_GLOBAL_H
