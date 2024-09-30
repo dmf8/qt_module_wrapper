@@ -56,15 +56,18 @@ bool PathOperation::CutAs(const QString &path, const QString &new_file) const
 
 bool PathOperation::Delete(const QString &path) const
 {
-    return false;
+    if (!Exists(path)) return true;
+    QDir dir(path);
+    return dir.removeRecursively();
 }
 
 bool PathOperation::Rename(const QString &path, const QString &new_name) const
 {
     if (!Exists(path)) return false;
-    if ("" == new_name) return false;
+    QString reg_new_name = EndName(new_name);
+    if ("" == reg_new_name) return false;
 
-    if (IsSame(EndName(path), EndName(new_name))) return true;
-    QString full_new_name = PathJoin(FolderWithin(path), EndName(new_name));
+    if (IsSame(EndName(path), reg_new_name)) return true;
+    QString full_new_name = PathJoin(FolderWithin(path), reg_new_name);
     return QFile::rename(AbsoluteRegularPath(path), AbsoluteRegularPath(full_new_name));
 }
