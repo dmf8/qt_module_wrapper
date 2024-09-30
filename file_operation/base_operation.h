@@ -11,7 +11,7 @@ public:
 
     // query
     virtual QString CurrentPath() const;
-    virtual QString AbsoluteRegular(const QString& item) const;
+    virtual QString AbsoluteRegularPath(const QString& item) const;
     virtual QString EndName(const QString& item) const;
     virtual QString FolderWithin(const QString& item) const;
 

@@ -29,7 +29,42 @@ QString PathOperation::PathJoin(const QString &p1, const QString &p2) const
 
 bool PathOperation::ForcePathExistance(const QString &path) const
 {
-    QString reg = AbsoluteRegular(path);
+    QString reg = AbsoluteRegularPath(path);
     if (Exists(reg)) return true;
     return QDir().mkpath(reg);
+}
+
+bool PathOperation::CopyToFolder(const QString &path, const QString &folder) const
+{
+    return false;
+}
+
+bool PathOperation::CopyAs(const QString &path, const QString &new_file) const
+{
+    return false;
+}
+
+bool PathOperation::CutToFolder(const QString &path, const QString &folder) const
+{
+    return false;
+}
+
+bool PathOperation::CutAs(const QString &path, const QString &new_file) const
+{
+    return false;
+}
+
+bool PathOperation::Delete(const QString &path) const
+{
+    return false;
+}
+
+bool PathOperation::Rename(const QString &path, const QString &new_name) const
+{
+    if (!Exists(path)) return false;
+    if ("" == new_name) return false;
+
+    if (IsSame(EndName(path), EndName(new_name))) return true;
+    QString full_new_name = PathJoin(FolderWithin(path), EndName(new_name));
+    return QFile::rename(AbsoluteRegularPath(path), AbsoluteRegularPath(full_new_name));
 }

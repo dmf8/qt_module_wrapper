@@ -27,13 +27,13 @@ bool BaseOperation::IsAbsolute(const QString &item) const
 
 bool BaseOperation::Exists(const QString &item) const
 {
-    QFileInfo info(AbsoluteRegular(item));
+    QFileInfo info(AbsoluteRegularPath(item));
     return info.exists();
 }
 
 bool BaseOperation::IsSame(const QString &p1, const QString &p2) const
 {
-    return AbsoluteRegular(p1) == AbsoluteRegular(p2);
+    return AbsoluteRegularPath(p1) == AbsoluteRegularPath(p2);
 }
 
 bool BaseOperation::Delete(const QString &item) const
@@ -79,21 +79,26 @@ QString BaseOperation::CurrentPath() const
     return QCoreApplication::applicationDirPath();
 }
 
-QString BaseOperation::AbsoluteRegular(const QString &item) const
+QString BaseOperation::AbsoluteRegularPath(const QString &item) const
 {
     QString reg = CheckEmpty(item);
     QFileInfo info(reg);
     QString info_abs = info.absoluteFilePath();
-    return QDir::cleanPath(info_abs);
+    info_abs = QDir::cleanPath(info_abs);     // remove / at end
+    if (info_abs.contains("..")) return "/";  // special case like /..
+    return info_abs;
 }
 
 QString BaseOperation::EndName(const QString &item) const
 {
-    return QFileInfo(AbsoluteRegular(item)).fileName();
+    if ("" == item) return "";
+    QString end = QFileInfo(AbsoluteRegularPath(item)).fileName();
+    if (".." == end) return "";  // special path like /..
+    return end;
 }
 
 QString BaseOperation::FolderWithin(const QString &item) const
 {
-    QString abs_path = QFileInfo(AbsoluteRegular(item)).absolutePath();
-    return AbsoluteRegular(abs_path);
+    QString abs_path = QFileInfo(AbsoluteRegularPath(item)).absolutePath();
+    return AbsoluteRegularPath(abs_path);
 }

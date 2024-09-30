@@ -33,7 +33,7 @@ bool FileOperation::CopyToFolder(const QString &file, const QString &path) const
         return true;
     }
 
-    QString new_file_name = PathOperation().PathJoin(AbsoluteRegular(path), EndName(file));
+    QString new_file_name = PathOperation().PathJoin(AbsoluteRegularPath(path), EndName(file));
     if (!Delete(new_file_name)) return false;
     return QFile::copy(file, new_file_name);
 }
@@ -61,7 +61,7 @@ bool FileOperation::CopyAs(const QString &file, const QString &new_file) const
 bool FileOperation::CutToFolder(const QString &file, const QString &path) const
 {
     QString new_name = PathOperation().PathJoin(  //
-        AbsoluteRegular(path),                    //
+        AbsoluteRegularPath(path),                //
         EndName(file));
     return CutAs(file, new_name);
 }
@@ -78,7 +78,7 @@ bool FileOperation::Delete(const QString &file) const
     if (!BaseOperation::Exists(file)) return true;
     if (!Exists(file)) return false;  // item is not file
 
-    return QFile::remove(AbsoluteRegular(file));
+    return QFile::remove(AbsoluteRegularPath(file));
 }
 
 bool FileOperation::Rename(const QString &file, const QString &new_file_name) const
@@ -88,8 +88,8 @@ bool FileOperation::Rename(const QString &file, const QString &new_file_name) co
         FolderWithin(file),                           //
         EndName(new_file_name));
 
-    if (AbsoluteRegular(file) == AbsoluteRegular(new_abs_name)) return true;
-    return QFile::rename(AbsoluteRegular(file), new_abs_name);
+    if (AbsoluteRegularPath(file) == AbsoluteRegularPath(new_abs_name)) return true;
+    return QFile::rename(AbsoluteRegularPath(file), new_abs_name);
 }
 
 bool FileOperation::ForcePathExistance(const QString &path) const
