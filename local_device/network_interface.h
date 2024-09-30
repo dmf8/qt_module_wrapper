@@ -2,9 +2,11 @@
 #define NETWORK_INTERFACE_H
 
 #include <QList>
+
+#include "local_device_global.h"
 class QNetworkInterface;
 
-class NetworkInterface
+class LOCAL_DEVICE_EXPORT NetworkInterface
 {
 public:
     NetworkInterface();

@@ -10,11 +10,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    file_operation.cpp
+    base_operation.cpp \
+    file_folder_handler.cpp \
+    file_operation.cpp \
+    path_operation.cpp
 
 HEADERS += \
+    base_operation.h \
+    file_folder_handler.h \
     file_operation_global.h \
-    file_operation.h
+    file_operation.h \
+    path_operation.h \
+    test_cases.h
 
 LIB_NAME = file_operation
 PROJECT_ROOT_PATH = $$absolute_path($${_PRO_FILE_PWD_}/../)
