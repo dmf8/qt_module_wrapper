@@ -6,10 +6,6 @@
 #include "base_operation.h"
 #include "file_operation_global.h"
 
-/**
- * @brief The FileOperation class
- folder path may end up with or without /, this should be worried by this class but not user
- */
 class FILE_OPERATION_EXPORT FileOperation : public BaseOperation
 {
 public:
