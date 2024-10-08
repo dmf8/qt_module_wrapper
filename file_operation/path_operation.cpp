@@ -3,6 +3,8 @@
 #include <QDir>
 #include <QFileInfo>
 
+#include "file_operation.h"
+
 PathOperation::PathOperation()
 {
 }
@@ -34,24 +36,70 @@ bool PathOperation::ForcePathExistance(const QString &path) const
     return QDir().mkpath(reg);
 }
 
-bool PathOperation::CopyToFolder(const QString &path, const QString &folder) const
+bool PathOperation::IsParent(const QString &parent, const QString &child) const
 {
-    return false;
+    QString p = AbsoluteRegularPath(parent);
+    QString c = AbsoluteRegularPath(child);
+    return c.contains(p) && c.size() > p.size();
 }
 
-bool PathOperation::CopyAs(const QString &path, const QString &new_file) const
+bool PathOperation::CopyToFolder(const QString &src_path, const QString &dst_folder) const
 {
-    return false;
+    QString src_end_name = EndName(src_path);
+    QString dest_path = AbsoluteRegularPath(dst_folder);
+    QString new_folder_abs = PathOperation().PathJoin(dest_path, src_end_name);
+    return CopyAs(src_path, new_folder_abs);
 }
 
-bool PathOperation::CutToFolder(const QString &path, const QString &folder) const
+bool PathOperation::CopyAs(const QString &src_path, const QString &dst_path) const
 {
-    return false;
+    // check
+    if (!Exists(src_path)) return false;
+    if (IsSame(src_path, dst_path)) return true;
+    if (IsParent(dst_path, src_path)) return false;
+    if (IsParent(src_path, dst_path)) return false;
+
+    // clear
+    if (Exists(dst_path))
+        if (!Delete(dst_path)) return false;
+
+    // new folder
+    if (!ForcePathExistance(dst_path)) return false;
+
+    // copy files
+    QDir src_dir(src_path);
+    QFileInfoList file_list = src_dir.entryInfoList(QDir::Files);
+    bool ret = true;
+    FileOperation fo;
+    for (const auto &file : file_list)
+        ret |= fo.CopyToFolder(file.absoluteFilePath(), dst_path);
+
+    // copy sub folders
+    QFileInfoList dir_list = src_dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
+    for (const auto &path : dir_list) {
+        QString sub_name = EndName(path.absoluteFilePath());
+        QString sub_dst = PathJoin(dst_path, sub_name);
+        ret |= CopyAs(path.absoluteFilePath(), sub_dst);
+    }
+    return ret;
 }
 
-bool PathOperation::CutAs(const QString &path, const QString &new_file) const
+bool PathOperation::CutToFolder(const QString &src_path, const QString &dst_folder) const
 {
-    return false;
+    QString src_end_name = EndName(src_path);
+    QString dest_path = AbsoluteRegularPath(dst_folder);
+    QString new_folder_abs = PathOperation().PathJoin(dest_path, src_end_name);
+    return CutAs(src_path, new_folder_abs);
+}
+
+bool PathOperation::CutAs(const QString &src_path, const QString &dst_path) const
+{
+    if (IsSame(src_path, dst_path))
+        return true;
+    else {
+        if (!CopyAs(src_path, dst_path)) return false;
+        return Delete(src_path);
+    }
 }
 
 bool PathOperation::Delete(const QString &path) const

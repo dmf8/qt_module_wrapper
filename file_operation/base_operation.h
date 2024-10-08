@@ -11,7 +11,10 @@ public:
 
     // query
     virtual QString CurrentPath() const;
-    virtual QString AbsoluteRegularPath(const QString& item) const;
+    virtual QString AbsoluteRegularPath(const QString& item) const; /*
+                                                                     * "/" or other absolute path without "/" at end
+                                                                     * no "." and ".."
+                                                                     */
     virtual QString EndName(const QString& item) const;
     virtual QString FolderWithin(const QString& item) const;
 
@@ -30,7 +33,7 @@ public:
     virtual bool Rename(const QString& item, const QString& new_name) const;
 
 protected:
-    virtual QString CheckEmpty(const QString& item) const;
+    virtual QString CheckEmpty(const QString& item) const;  //""->"."
 };
 
 #endif  // BASE_OPERATION_H
