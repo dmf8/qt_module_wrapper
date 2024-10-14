@@ -7,6 +7,7 @@ SUBDIRS += \
 #    wait_for_result \
 #    json_handler \
     file_operation \
+    hex_editor \
     local_device \
     opencv_format_convert \
 #    pro_module_generate_tool \

@@ -12,6 +12,7 @@ PRI_DATA_HANDLER = $${PROJECT_ROOT_PATH}/data_handler/ref_data_handler.pri
 PRI_RANDOM_TEXT_STREAM = $${PROJECT_ROOT_PATH}/random_text_stream/ref_random_text_stream.pri
 PRI_OPENCV_FORMAT_CONVERT = $${PROJECT_ROOT_PATH}/opencv_format_convert/ref_opencv_format_convert.pri
 PRI_JSON_HANDLER = $${PROJECT_ROOT_PATH}/json_handler/ref_json_handler.pri
+PRI_HEX_EDITOR = $${PROJECT_ROOT_PATH}/hex_editor/ref_hex_editor.pri
 
 # io
 PRI_SERIAL_WRAPPER = $${PROJECT_ROOT_PATH}/serial_wrapper/ref_serial_wrapper.pri
