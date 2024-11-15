@@ -11,11 +11,17 @@ class RANDOM_TEXT_STREAM_EXPORT RandomTextStream
 public:
     RandomTextStream(QFile* f);
     RandomTextStream();
+    ~RandomTextStream();
 
+    // io
     void setFile(QFile* f);
     void write();
-    int lines() const;
-    void addLine(const QString& content = "");
+    // status
+    int lineCount() const;
+    void output() const;
+
+    // operate
+    void appendLine(const QString& content = "");
     bool removeLine(int id);
     QString getLine(int id) const;
     bool setLine(int id, const QString& content = "");
@@ -29,7 +35,7 @@ private:
 
 private:
     QFile* f;
-    QStringList buffer;
+    QStringList lines;
 };
 
 #endif  // RANDOM_TEXT_STREAM_H

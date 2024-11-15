@@ -10,9 +10,11 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    csv_editor.cpp \
     random_text_stream.cpp
 
 HEADERS += \
+    csv_editor.h \
     random_text_stream_global.h \
     random_text_stream.h
 

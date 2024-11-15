@@ -10,11 +10,13 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    json_handler.cpp
+    json_handler.cpp \
+    json_object_index.cpp
 
 HEADERS += \
     json_handler_global.h \
-    json_handler.h
+    json_handler.h \
+    json_object_index.h
 
 LIB_NAME = json_handler
 PROJECT_ROOT_PATH = $$absolute_path($${_PRO_FILE_PWD_}/../)
