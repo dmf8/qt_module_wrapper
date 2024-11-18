@@ -1,11 +1,14 @@
 #include "csv_editor.h"
 
+#include <QDebug>
+
 #include "random_text_stream.h"
 
 CsvEditor::CsvEditor()
     : rows(0)
     , columns(0)
     , table(new RandomTextStream)
+    , f(nullptr)
 {
 }
 
@@ -13,6 +16,7 @@ CsvEditor::CsvEditor(int rows, int columns)
     : rows(rows)
     , columns(columns)
     , table(new RandomTextStream)
+    , f(nullptr)
 {
     for (int i = 0; i < rows; ++i)
         appendEmptyRow();
@@ -24,14 +28,34 @@ CsvEditor::~CsvEditor()
         delete table;
         table = nullptr;
     }
+    ClearFile();
 }
 
-void CsvEditor::setFile(QFile *f)
+bool CsvEditor::openNew(const QString &file)
 {
-    table->setFile(f);
+    ClearFile();
+    f = new QFile(file);
+    return f->open(QFile::WriteOnly | QFile::Truncate);
 }
 
-void CsvEditor::write()
+bool CsvEditor::openExisting(const QString &file)
+{
+    ClearFile();
+    f = new QFile(file);
+    if (!f->open(QFile::ReadWrite)) return false;
+
+    ClearContent();
+    QByteArray line;
+    for (line = f->readLine(); line.size(); line = f->readLine()) {
+        QStringList line_items = splitElement(QString(line));
+        appendRow(line_items);
+        qDebug() << QString(line);
+    }
+    qDebug() << rowCount() << columnCount();
+    return true;
+}
+
+void CsvEditor::save()
 {
     table->write();
 }
@@ -232,4 +256,19 @@ QString CsvEditor::generateEmptyRow(int columns) const
     for (int i = 0; i < columns; ++i)
         row.append(",");
     return row;
+}
+
+void CsvEditor::ClearFile()
+{
+    if (f) {
+        f->close();
+        delete f;
+        f = nullptr;
+    }
+}
+
+void CsvEditor::ClearContent()
+{
+    setColumnCount(0);
+    setRowCount(0);
 }

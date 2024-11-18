@@ -14,8 +14,9 @@ public:
     ~CsvEditor();
 
     // io
-    void setFile(QFile* f);  //
-    void write();            //
+    bool openNew(const QString& file);
+    bool openExisting(const QString& file);
+    void save();  //
 
     // status
     int rowCount() const;     //
@@ -44,11 +45,14 @@ private:
     void appendEmptyColumn();                                //
     void appendEmptyColumns(int count);                      //
     QString generateEmptyRow(int columns) const;             //
+    void ClearFile();
+    void ClearContent();
 
     // private:
     int rows;
     int columns;
     RandomTextStream* table;
+    QFile* f;
 };
 
 #endif  // CSV_EDITOR_H
