@@ -23,25 +23,27 @@ public:
     void output() const;      //
 
     // read
-    QStringList getRow(int id) const;
-    QStringList getColumn(int id) const;
+    QStringList getRow(int id) const;     //
+    QStringList getColumn(int id) const;  //
 
     // write
-    void appendRow(const QStringList& value);
-    void appendColumn(const QStringList& value);
-    void setRow(int id, const QStringList& value);
-    void setColumn(int id, const QStringList& value);
-    void setElement(int row, int column, const QString& value);
+    void appendRow(const QStringList& value);                    //
+    void appendColumn(const QStringList& value);                 //
+    void setRow(int id, const QStringList& value);               //
+    void setColumn(int id, const QStringList& value);            //
+    void setElement(int row, int column, const QString& value);  //
 
-    // private:
+private:
     QStringList splitElement(const QString& line) const;     //
     QString joinElement(const QStringList& elements) const;  //
-    int vectorCount(const QStringList& vector) const;
-    void setRows(int rows);
-    void setColumns(int columns);
-    void appendEmptyRow();                        //
-    void appendEmptyColumn();                     //
-    QString generateEmptyRow(int columns) const;  //
+    void resizeList(QStringList& list, int count) const;     //
+    void setRowCount(int rows);                              //
+    void setColumnCount(int columns);                        //
+    void appendEmptyRow();                                   //
+    void appendEmptyRows(int count);                         //
+    void appendEmptyColumn();                                //
+    void appendEmptyColumns(int count);                      //
+    QString generateEmptyRow(int columns) const;             //
 
     // private:
     int rows;
