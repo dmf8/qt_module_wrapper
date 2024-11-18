@@ -4,7 +4,7 @@
 #include <QFile>
 #include <QTextStream>
 
-RandomTextStream::RandomTextStream(QFile *f)
+RandomTextStream::RandomTextStream(QIODevice *f)
     : f(f)
 {
 }
@@ -17,7 +17,7 @@ RandomTextStream::~RandomTextStream()
 {
 }
 
-void RandomTextStream::setFile(QFile *f)
+void RandomTextStream::setFile(QIODevice *f)
 {
     this->f = f;
 }

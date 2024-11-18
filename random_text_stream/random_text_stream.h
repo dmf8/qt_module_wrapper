@@ -5,16 +5,16 @@
 
 #include "random_text_stream_global.h"
 
-class QFile;
+class QIODevice;
 class RANDOM_TEXT_STREAM_EXPORT RandomTextStream
 {
 public:
-    RandomTextStream(QFile* f);
+    RandomTextStream(QIODevice* f);
     RandomTextStream();
     ~RandomTextStream();
 
     // io
-    void setFile(QFile* f);
+    void setFile(QIODevice* f);
     void write();
     // status
     int lineCount() const;
@@ -34,7 +34,7 @@ private:
     void forceLineId(int id);
 
 private:
-    QFile* f;
+    QIODevice* f;
     QStringList lines;
 };
 
