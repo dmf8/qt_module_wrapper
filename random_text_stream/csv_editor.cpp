@@ -57,6 +57,7 @@ bool CsvEditor::openExisting(const QString &file)
 
 void CsvEditor::save()
 {
+    f->resize(0);
     table->write();
 }
 
