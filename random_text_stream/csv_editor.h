@@ -51,8 +51,8 @@ private:
     // private:
     int rows;
     int columns;
-    RandomTextStream* table;
     QFile* f;
+    RandomTextStream* table;
 };
 
 #endif  // CSV_EDITOR_H

@@ -7,16 +7,16 @@
 CsvEditor::CsvEditor()
     : rows(0)
     , columns(0)
-    , table(new RandomTextStream)
     , f(nullptr)
+    , table(new RandomTextStream)
 {
 }
 
 CsvEditor::CsvEditor(int rows, int columns)
     : rows(rows)
     , columns(columns)
-    , table(new RandomTextStream)
     , f(nullptr)
+    , table(new RandomTextStream)
 {
     for (int i = 0; i < rows; ++i)
         appendEmptyRow();
@@ -35,6 +35,7 @@ bool CsvEditor::openNew(const QString &file)
 {
     ClearFile();
     f = new QFile(file);
+    table->setFile(f);
     return f->open(QFile::WriteOnly | QFile::Truncate);
 }
 
@@ -42,6 +43,7 @@ bool CsvEditor::openExisting(const QString &file)
 {
     ClearFile();
     f = new QFile(file);
+    table->setFile(f);
     if (!f->open(QFile::ReadWrite)) return false;
 
     ClearContent();
