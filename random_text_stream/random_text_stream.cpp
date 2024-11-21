@@ -22,9 +22,11 @@ void RandomTextStream::setFile(QIODevice *f)
     this->f = f;
 }
 
-void RandomTextStream::write()
+void RandomTextStream::write(const QString &codec)
 {
     QTextStream s(f);
+    if (codec != "") s.setCodec(codec.toUtf8());
+
     for (int i = 0; i < lines.size(); ++i)
         s << lines[i] << "\n";
 }

@@ -15,8 +15,8 @@ public:
 
     // io
     bool openNew(const QString& file);
-    bool openExisting(const QString& file);
-    void save();  //
+    bool openExisting(const QString& file, QString codec = "");
+    void save(const QString& codec = "");  //
 
     // status
     int rowCount() const;     //

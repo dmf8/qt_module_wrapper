@@ -1,6 +1,7 @@
 #include "csv_editor.h"
 
 #include <QDebug>
+#include <QTextCodec>
 
 #include "random_text_stream.h"
 
@@ -39,7 +40,7 @@ bool CsvEditor::openNew(const QString &file)
     return f->open(QFile::WriteOnly | QFile::Truncate);
 }
 
-bool CsvEditor::openExisting(const QString &file)
+bool CsvEditor::openExisting(const QString &file, QString codec)
 {
     ClearFile();
     f = new QFile(file);
@@ -49,6 +50,10 @@ bool CsvEditor::openExisting(const QString &file)
     ClearContent();
     QByteArray line;
     for (line = f->readLine(); line.size(); line = f->readLine()) {
+        if (codec != "") {
+            QTextCodec *c = QTextCodec::codecForName(codec.toUtf8());
+            line = c->toUnicode(line).toUtf8();
+        }
         QStringList line_items = splitElement(QString(line));
         appendRow(line_items);
         qDebug() << QString(line);
@@ -57,10 +62,10 @@ bool CsvEditor::openExisting(const QString &file)
     return true;
 }
 
-void CsvEditor::save()
+void CsvEditor::save(const QString &codec)
 {
     f->resize(0);
-    table->write();
+    table->write(codec);
 }
 
 int CsvEditor::rowCount() const
