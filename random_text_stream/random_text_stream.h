@@ -16,6 +16,7 @@ public:
     // io
     void setFile(QIODevice* f);
     void write(const QString& codec = "");
+    void write(QTextCodec* codec);
     // status
     int lineCount() const;
     void output() const;

@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QFile>
+#include <QTextCodec>
 #include <QTextStream>
 
 RandomTextStream::RandomTextStream(QIODevice *f)
@@ -29,6 +30,11 @@ void RandomTextStream::write(const QString &codec)
 
     for (int i = 0; i < lines.size(); ++i)
         s << lines[i] << "\n";
+}
+
+void RandomTextStream::write(QTextCodec *codec)
+{
+    write(codec->name());
 }
 
 int RandomTextStream::lineCount() const

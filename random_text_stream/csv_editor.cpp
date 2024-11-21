@@ -62,10 +62,20 @@ bool CsvEditor::openExisting(const QString &file, QString codec)
     return true;
 }
 
+bool CsvEditor::openExisting(const QString &file, QTextCodec *codec)
+{
+    return openExisting(file, codec->name());
+}
+
 void CsvEditor::save(const QString &codec)
 {
     f->resize(0);
     table->write(codec);
+}
+
+void CsvEditor::save(QTextCodec *codec)
+{
+    save(codec->name());
 }
 
 int CsvEditor::rowCount() const
