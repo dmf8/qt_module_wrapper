@@ -9,9 +9,9 @@ private:                                                                     \
                                                                              \
 public:                                                                      \
     type lower() const;                                                      \
-    void set##UPPER(type lower);
-
-#define PROP_READ_WRITE_MEMBER_SIGNAL(lower) void lower##Changed();
+    void set##UPPER(type lower);                                             \
+Q_SIGNALS:                                                                   \
+    void lower##Changed();
 
 #define PROP_READ_WRITE_MEMBER_CPP(type, lower, UPPER, CLASS) \
     type CLASS::lower() const                                 \
@@ -32,9 +32,10 @@ private:                                                                     \
                                                                              \
 public:                                                                      \
     type lower() const;                                                      \
-    Q_INVOKABLE void set##UPPER(type lower);
+    Q_INVOKABLE void set##UPPER(type lower);                                 \
+Q_SIGNALS:                                                                   \
+    void lower##Changed();
 
-#define PROP_READ_WRITE_MEMBER_SIGNAL(lower) void lower##Changed();
 
 #define PROP_READ_WRITE_MEMBER_CPP(type, lower, UPPER, CLASS) \
     type CLASS::lower() const                                 \
@@ -53,8 +54,8 @@ private:                                                    \
     Q_PROPERTY(type lower READ lower NOTIFY lower##Changed) \
                                                             \
 public:                                                     \
-    type lower() const;
-
-#define PROP_READ_WRITE_MEMBER_SIGNAL(lower) void lower##Changed();
+    type lower() const;                                     \
+Q_SIGNALS:                                                  \
+    void lower##Changed();
 
 #endif //Q_PROP_H
