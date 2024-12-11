@@ -92,4 +92,45 @@ public:                                                     \
     type lower() const;
 #endif
 
+///
+#ifdef Q_OS_LINUX
+#define PROP_READ_WRITE_H(type, lower, UPPER)                                \
+private:                                                                     \
+    Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
+                                                                             \
+public:                                                                      \
+    type lower() const;                                                      \
+    void set##UPPER(type lower);                                             \
+Q_SIGNALS:                                                                   \
+    void lower##Changed();
+#else
+#define PROP_READ_WRITE_H(type, lower, UPPER)                                \
+private:                                                                     \
+    Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
+                                                                             \
+public:                                                                      \
+    type lower() const;                                                      \
+    void set##UPPER(type lower);
+#endif
+///
+#ifdef Q_OS_LINUX
+#define PROP_READ_QMLWRITE_H(type, lower, UPPER)                             \
+private:                                                                     \
+    Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
+                                                                             \
+public:                                                                      \
+    type lower() const;                                                      \
+    Q_INVOKABLE void set##UPPER(type lower);                                 \
+Q_SIGNALS:                                                                   \
+    void lower##Changed();
+#else
+#define PROP_READ_QMLWRITE_H(type, lower, UPPER)                             \
+private:                                                                     \
+    Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
+                                                                             \
+public:                                                                      \
+    type lower() const;                                                      \
+    Q_INVOKABLE void set##UPPER(type lower);
+#endif
+
 #endif //Q_PROP_H
