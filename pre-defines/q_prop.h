@@ -75,7 +75,7 @@ public:                                                                      \
 
 ///
 #ifdef Q_OS_LINUX
-#define PROP_READ_H(type, lower)                            \
+#define PROP_READ(type, lower)                              \
 private:                                                    \
     Q_PROPERTY(type lower READ lower NOTIFY lower##Changed) \
                                                             \
@@ -84,7 +84,7 @@ public:                                                     \
 Q_SIGNALS:                                                  \
     void lower##Changed();
 #else
-#define PROP_READ_H(type, lower)                            \
+#define PROP_READ(type, lower)                              \
 private:                                                    \
     Q_PROPERTY(type lower READ lower NOTIFY lower##Changed) \
                                                             \
@@ -94,7 +94,7 @@ public:                                                     \
 
 ///
 #ifdef Q_OS_LINUX
-#define PROP_READ_WRITE_H(type, lower, UPPER)                                \
+#define PROP_READ_WRITE(type, lower, UPPER)                                  \
 private:                                                                     \
     Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
                                                                              \
@@ -104,7 +104,7 @@ public:                                                                      \
 Q_SIGNALS:                                                                   \
     void lower##Changed();
 #else
-#define PROP_READ_WRITE_H(type, lower, UPPER)                                \
+#define PROP_READ_WRITE(type, lower, UPPER)                                  \
 private:                                                                     \
     Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
                                                                              \
@@ -114,7 +114,7 @@ public:                                                                      \
 #endif
 ///
 #ifdef Q_OS_LINUX
-#define PROP_READ_QMLWRITE_H(type, lower, UPPER)                             \
+#define PROP_READ_QMLWRITE(type, lower, UPPER)                               \
 private:                                                                     \
     Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
                                                                              \
@@ -124,7 +124,7 @@ public:                                                                      \
 Q_SIGNALS:                                                                   \
     void lower##Changed();
 #else
-#define PROP_READ_QMLWRITE_H(type, lower, UPPER)                             \
+#define PROP_READ_QMLWRITE(type, lower, UPPER)                               \
 private:                                                                     \
     Q_PROPERTY(type lower READ lower WRITE set##UPPER NOTIFY lower##Changed) \
                                                                              \
